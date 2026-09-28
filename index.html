@@ -1,0 +1,925 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>옥포중학교 이야기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@200;300;400;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;600&display=swap&text=%E7%8E%89%E6%B5%A6%E4%B8%AD%E5%AD%B8%E6%A0%A1%E5%8B%A4%E5%8B%89%E6%AD%A3%E7%9B%B4%E5%81%A5%E5%BA%B7">
+<style>
+:root{
+  --bg:#ECF1F0; --bg-2:#E2E9E8; --surface:#F6F8F8;
+  --ink:#0F2930; --ink-2:#3B5359; --muted:#667B7F; --line:#C7D3D2;
+  --camellia:#A3123A; --camellia-deep:#640A24; --rose:#C4405F; --rose-deep:#761B35;
+  --gold:#8E651C; --on-gold:#FFFDF8; --leaf:#1E4A3B; --leaf-2:#3A6E5B; --petal-edge:rgba(40,0,12,.22);
+
+  --hero-bg:#06181D; --hero-bg-2:#0B262E; --hero-ink:#EDF3F1; --hero-ink-2:#BCCDCC; --hero-muted:#8FA7AA;
+  --hero-gold:#D5AD60; --hero-camellia:#D22A4F; --hero-camellia-deep:#7A0B28; --hero-stamen:#F2D58E;
+  --hero-line:rgba(213,173,96,.22); --hero-rose:#E0607F; --hero-rose-deep:#8E2342;
+  --hero-leaf:#2B6652; --hero-leaf-2:#4A8C74;
+  --sash:#8A0F2F; --sash-ink:#F7E8EB;
+
+  --ease:cubic-bezier(.16,.84,.2,1);
+  --serif:'Hahmlet','Noto Serif KR','Nanum Myeongjo','AppleMyungjo','Batang',serif;
+  --sans:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+  --hanja:'Noto Serif KR','AppleMyungjo','Batang',serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#061317; --bg-2:#08191E; --surface:#0B1E24;
+    --ink:#E3ECEA; --ink-2:#B0C2C2; --muted:#7E9699; --line:#1C353C;
+    --camellia:#E4476A; --camellia-deep:#9E1A3C; --rose:#E27A94; --rose-deep:#9C3553;
+    --gold:#D5AD60; --on-gold:#1A1406; --leaf:#2F6A55; --leaf-2:#4A8C74; --petal-edge:rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#061317; --bg-2:#08191E; --surface:#0B1E24;
+  --ink:#E3ECEA; --ink-2:#B0C2C2; --muted:#7E9699; --line:#1C353C;
+  --camellia:#E4476A; --camellia-deep:#9E1A3C; --rose:#E27A94; --rose-deep:#9C3553;
+  --gold:#D5AD60; --on-gold:#1A1406; --leaf:#2F6A55; --leaf-2:#4A8C74; --petal-edge:rgba(0,0,0,.35);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.75 var(--sans);word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;overflow-x:clip}
+::selection{background:var(--camellia);color:#fff}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hj{font-family:var(--hanja)}
+.mono{font-family:var(--mono)}
+.wrap{max-width:1160px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+
+/* ---------- dark bands (hero, symbols, visit) ---------- */
+.band{
+  --ink:var(--hero-ink); --ink-2:var(--hero-ink-2); --muted:var(--hero-muted); --line:var(--hero-line);
+  --gold:var(--hero-gold); --on-gold:#1A1406; --camellia:var(--hero-camellia); --camellia-deep:var(--hero-camellia-deep);
+  --rose:var(--hero-rose); --rose-deep:var(--hero-rose-deep); --leaf:var(--hero-leaf); --leaf-2:var(--hero-leaf-2);
+  --surface:rgba(255,255,255,.028); --petal-edge:rgba(0,0,0,.35);
+  color-scheme:dark;
+  position:relative;isolation:isolate;color:var(--ink);
+  background:
+    radial-gradient(900px 520px at 84% -8%, rgba(213,173,96,.16), transparent 62%),
+    radial-gradient(700px 420px at -6% 105%, rgba(210,42,79,.13), transparent 60%),
+    linear-gradient(180deg, var(--hero-bg) 0%, var(--hero-bg-2) 100%);
+  border-block:1px solid var(--hero-line);
+}
+.band::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.09;mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.band > .wrap{position:relative;z-index:1}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;padding-top:env(safe-area-inset-top,0px);color:var(--hero-ink);--ng:var(--hero-gold);transition:background-color .5s,color .5s,box-shadow .5s}
+.nav.solid{background:var(--bg);background:color-mix(in srgb,var(--bg) 84%,transparent);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);color:var(--ink);--ng:var(--gold);box-shadow:0 1px 0 var(--line)}
+.nav-in{max-width:1160px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px);height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:baseline;gap:8px;text-decoration:none;font-family:var(--serif);font-weight:600;font-size:17px;letter-spacing:.02em;white-space:nowrap}
+.brand .hj{color:var(--ng);font-weight:300;transition:color .5s}
+.nav nav{display:flex;gap:clamp(12px,3vw,30px)}
+.nav nav a{position:relative;text-decoration:none;font-size:14px;letter-spacing:.02em;padding-block:6px;opacity:.82;transition:opacity .3s;white-space:nowrap}
+.nav nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--ng);transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+.nav nav a:hover,.nav nav a.active{opacity:1}
+.nav nav a:hover::after,.nav nav a.active::after{transform:scaleX(1);transform-origin:left}
+.progress{position:absolute;left:0;right:0;bottom:0;height:2px;pointer-events:none}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--hero-camellia),var(--hero-gold));transform-origin:left;transform:scaleX(var(--p,0))}
+@media (max-width:420px){.brand .hj{display:none}}
+
+/* ---------- hero ---------- */
+.hero{overflow:hidden;border-top:0}
+#sea{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
+.hero-in{padding-block:calc(64px + clamp(64px,11vh,132px)) clamp(150px,22vh,230px);will-change:transform}
+.eyebrow{display:flex;align-items:center;gap:12px;margin:0;font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.eyebrow::before{content:"";width:7px;height:7px;background:var(--gold);transform:rotate(45deg);flex:none}
+.title{margin:.28em 0 .12em;font-family:var(--serif);font-weight:300;font-size:clamp(60px,13.5vw,172px);line-height:1;letter-spacing:-.035em;white-space:nowrap}
+.ch{display:inline-block;color:transparent;-webkit-background-clip:text;background-clip:text;
+  background-image:linear-gradient(100deg,var(--hero-ink) 0 42%,#FFF1CF 48%,var(--hero-gold) 51%,var(--hero-ink) 58% 100%);
+  background-size:320% 100%;background-position:100% 0;
+  animation:rise 1.25s var(--ease) calc(.18s + var(--i)*.085s) backwards, shine 7s ease-in-out calc(1.9s + var(--i)*.13s) infinite;
+  transition:transform .5s var(--ease)}
+.ch:hover{transform:translateY(-.05em)}
+@keyframes rise{from{transform:translateY(.55em) rotate(5deg);opacity:0;filter:blur(10px)}}
+@keyframes shine{0%,62%{background-position:100% 0}88%,100%{background-position:0 0}}
+.subname{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin:0}
+.rule{width:min(360px,52vw);height:1px;background:linear-gradient(90deg,var(--gold),transparent);transform-origin:left;animation:draw 1.6s var(--ease) .75s backwards}
+.subname span{font-family:var(--mono);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+@keyframes draw{from{transform:scaleX(0)}}
+.lede{max-width:31em;margin:30px 0 0;font-size:clamp(17px,1.6vw,19.5px);font-weight:300;line-height:1.8;color:var(--ink-2)}
+.hero-facts{display:flex;flex-wrap:wrap;gap:18px 44px;margin:44px 0 0}
+.hero-facts div{padding-left:14px;border-left:1px solid rgba(213,173,96,.45)}
+.hero-facts dt{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.hero-facts dd{margin:2px 0 0;font-family:var(--serif);font-size:20px;font-weight:400;font-variant-numeric:tabular-nums}
+.hero-facts small{font-family:var(--mono);font-size:11px;color:var(--muted);margin-left:6px}
+.load{animation:fadeUp 1.1s var(--ease) var(--d,0s) backwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}}
+.hanja-rail{position:absolute;z-index:1;right:clamp(16px,5vw,72px);top:50%;transform:translateY(-54%);display:flex;flex-direction:column;align-items:center;gap:.08em;font-size:clamp(40px,5.4vw,78px);font-weight:300;line-height:1.08;color:transparent;-webkit-text-stroke:1px rgba(213,173,96,.62);pointer-events:none}
+.hanja-rail span{animation:inkIn 1.6s var(--ease) calc(.9s + var(--i)*.14s) backwards}
+@keyframes inkIn{from{opacity:0;transform:translateY(-14px);-webkit-text-stroke-color:transparent}}
+.hero-foot{position:absolute;z-index:1;left:0;right:0;bottom:20px}
+.hero-foot .wrap{display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--muted)}
+@media (max-width:760px){.hanja-rail{display:none}}
+
+/* ---------- sash ribbon ---------- */
+.ribbon{background:var(--sash);color:var(--sash-ink);overflow:hidden;padding-block:15px}
+.track{display:flex;width:max-content;animation:marquee 52s linear infinite}
+.ribbon:hover .track{animation-play-state:paused}
+.grp{display:flex;align-items:center;gap:34px;padding-right:34px;white-space:nowrap}
+.grp span{font-family:var(--serif);font-size:18px;letter-spacing:.04em}
+.grp .m{font-family:var(--mono);font-size:12px;letter-spacing:.24em;text-transform:uppercase}
+.grp .hj{font-family:var(--hanja);font-weight:300}
+.grp i{width:6px;height:6px;background:var(--hero-gold);transform:rotate(45deg);flex:none}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+.sec{padding-block:clamp(88px,11vw,148px)}
+.sec.alt{background:var(--bg-2)}
+.sec-head{display:grid;gap:18px;max-width:760px;margin-bottom:clamp(44px,6vw,76px)}
+.kicker{display:flex;align-items:center;gap:12px;margin:0;font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.kicker::before{content:"";width:40px;height:1px;background:currentColor;transform-origin:left;transform:scaleX(.25);transition:transform 1.4s var(--ease) .15s}
+.in .kicker::before,.kicker.in::before{transform:none}
+h2{margin:0;font-family:var(--serif);font-weight:300;font-size:clamp(32px,4.8vw,56px);line-height:1.2;letter-spacing:-.02em;text-wrap:balance}
+h2 em{font-style:normal;color:var(--camellia);background:linear-gradient(var(--gold),var(--gold)) no-repeat 0 96%/0% 1px;transition:background-size 1.3s var(--ease) .45s}
+.in h2 em{background-size:100% 1px}
+.sec-lede{margin:0;max-width:36em;color:var(--ink-2);font-size:17px}
+
+/* scroll reveal: content stays readable, only moves */
+.rv{transition:transform 1.2s var(--ease)}
+.rv.pre{transform:translateY(40px)}
+
+/* ---------- motto ---------- */
+.virtues{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:20px}
+.virtue{position:relative;overflow:hidden;padding:34px 32px 30px;background:var(--surface);border:1px solid var(--line);border-radius:2px;display:grid;gap:6px;align-content:start;transition:transform .6s var(--ease),border-color .5s,box-shadow .6s;will-change:transform}
+.virtue::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .5s;background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--gold) 18%,transparent),transparent 62%)}
+.virtue:hover{border-color:color-mix(in srgb,var(--gold) 60%,var(--line));box-shadow:0 30px 60px -38px color-mix(in srgb,var(--ink) 55%,transparent)}
+.virtue:hover::before{opacity:1}
+.virtue .big{margin:0 0 14px;font-size:clamp(84px,8.6vw,116px);font-weight:600;line-height:1;letter-spacing:.02em;color:transparent;-webkit-text-stroke:1.2px var(--gold);
+  -webkit-background-clip:text;background-clip:text;background-image:linear-gradient(to top,var(--camellia-deep),var(--camellia) 50%,transparent 50%);background-size:100% 200%;background-position:0 0;
+  transition:background-position 1.5s var(--ease) calc(.25s + var(--i)*.28s)}
+.virtues.in .virtue .big{background-position:0 100%}
+.virtue h3{margin:0;font-family:var(--serif);font-weight:600;font-size:28px;line-height:1.3;display:flex;align-items:baseline;gap:12px}
+.virtue h3 small{font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:.22em;color:var(--muted)}
+.virtue .def-k{margin:14px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--muted)}
+.virtue .def{margin:0;color:var(--ink-2);font-size:15.5px}
+
+/* ---------- symbols ---------- */
+.syms{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:22px}
+.sym{padding:clamp(28px,4vw,44px);background:var(--surface);border:1px solid var(--line);display:grid;gap:26px;align-content:start;transition:border-color .5s, transform 1.2s var(--ease)}
+.sym:hover{border-color:rgba(213,173,96,.55)}
+.flower{width:min(290px,80%);aspect-ratio:1;max-width:100%;margin-inline:auto;transition:transform 1s var(--ease)}
+.sym:hover .flower{transform:scale(1.045)}
+.flower svg{width:100%;height:100%;display:block;overflow:visible;animation:spin 150s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.flower .pt{transform-box:fill-box;transform-origin:50% 100%;transform:scale(.06);transition:transform 1.4s var(--ease) calc(var(--i)*55ms)}
+.flower .lf{transform-origin:0% 50%}
+.flower .st{transform-box:fill-box;transform-origin:50% 50%;transform:scale(0);transition:transform .9s var(--ease) calc(.75s + var(--i)*28ms)}
+.sym.in .flower .pt,.sym.in .flower .st{transform:none}
+.flower .lf path{fill:var(--leaf)}
+.flower .lf .vein{fill:none;stroke:var(--leaf-2);stroke-width:1.2}
+.flower .petal{stroke:var(--petal-edge);stroke-width:1}
+.flower .o{fill:url(#gc)}
+.flower .n{fill:color-mix(in srgb,var(--camellia) 86%,#fff)}
+.flower .st{fill:var(--gold)}
+.flower .core{fill:var(--hero-stamen)}
+.flower .L0{fill:var(--rose)}
+.flower .L1{fill:color-mix(in srgb,var(--rose) 82%,var(--rose-deep))}
+.flower .L2{fill:color-mix(in srgb,var(--rose) 62%,var(--rose-deep))}
+.flower .L3{fill:color-mix(in srgb,var(--rose) 42%,var(--rose-deep))}
+.flower .L4{fill:color-mix(in srgb,var(--rose) 24%,var(--rose-deep))}
+.flower .curl{fill:none;stroke:color-mix(in srgb,var(--rose) 50%,#fff);stroke-width:1.6;stroke-linecap:round}
+.sym-txt{display:grid;gap:4px}
+.sym h3{margin:8px 0 0;font-family:var(--serif);font-weight:300;font-size:clamp(34px,4vw,44px);line-height:1.2}
+.latin{margin:0;font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--muted)}
+.mean{list-style:none;margin:22px 0 0;padding:0}
+.mean li{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding-block:14px;border-top:1px solid var(--line);transform:translateX(-14px);transition:transform 1s var(--ease) calc(.35s + var(--i)*.13s)}
+.mean li:last-child{border-bottom:1px solid var(--line)}
+.sym.in .mean li{transform:none}
+.mean span{color:var(--muted);font-size:14.5px}
+.mean b{font-family:var(--serif);font-weight:400;font-size:18px;text-align:right;transition:color .4s}
+.mean li:hover b{color:var(--gold)}
+.aside{margin:18px 0 0;font-size:14px;color:var(--muted);line-height:1.7}
+
+/* ---------- numbers ---------- */
+.stats{display:grid;grid-template-columns:1fr;gap:40px 28px}
+@media (min-width:520px){.stats{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:980px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{display:grid;gap:6px;align-content:start}
+.stat::before{content:"";display:block;height:1px;margin-bottom:18px;background:var(--ink);transform-origin:left;transform:scaleX(.18);transition:transform 1.6s var(--ease) calc(var(--i)*.15s)}
+.stats.in .stat::before{transform:none}
+.num{display:flex;align-items:flex-end;gap:8px;font-family:var(--serif);font-weight:200;font-size:clamp(54px,6.2vw,84px);line-height:1.1;font-variant-numeric:tabular-nums lining-nums;letter-spacing:-.02em}
+.odo{display:inline-flex;height:1.1em;overflow:hidden}
+.dg{display:inline-block;height:1.1em;overflow:hidden}
+.strip{display:flex;flex-direction:column;transform:translateY(calc(var(--to) * -1.1em))}
+.strip span{display:block;height:1.1em;line-height:1.1em;text-align:center}
+.odo.roll .strip{transition:transform 2.3s var(--ease) calc(var(--di)*90ms)}
+.unit{font-family:var(--sans);font-weight:400;font-size:16px;color:var(--muted);padding-bottom:.9em;letter-spacing:0}
+.stat-k{margin:0;font-family:var(--serif);font-weight:600;font-size:19px}
+.stat-n{margin:0;font-size:14.5px;color:var(--muted);line-height:1.65}
+
+/* ---------- history ---------- */
+.tl{list-style:none;margin:0;padding:0;position:relative;max-width:900px;--dc:150px;--lx:calc(var(--dc) + 20px)}
+.tl::before,.tl::after{content:"";position:absolute;left:var(--lx);top:14px;bottom:14px;width:1px;background:var(--line)}
+.tl::after{background:linear-gradient(var(--gold),var(--camellia));transform-origin:top;transform:scaleY(var(--tp,0))}
+.tl-item{display:grid;grid-template-columns:var(--dc) 40px 1fr;grid-template-areas:"date dot body";align-items:start;padding-block:16px}
+.tl-date{grid-area:date;display:flex;align-items:baseline;justify-content:flex-end;gap:10px;font-variant-numeric:tabular-nums}
+.tl-date b{font-family:var(--serif);font-weight:300;font-size:30px;line-height:1.15;color:var(--ink);transition:color .5s}
+.tl-date span{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.tl-dot{grid-area:dot;justify-self:center;margin-top:13px;width:11px;height:11px;border-radius:50%;border:1px solid var(--gold);background:var(--bg-2);position:relative;z-index:1;transition:background-color .5s,border-color .5s,box-shadow .6s,transform .6s var(--ease)}
+.tl-item.on .tl-dot{background:var(--camellia);border-color:var(--camellia);box-shadow:0 0 0 6px color-mix(in srgb,var(--camellia) 18%,transparent);transform:scale(1.15)}
+.tl-item.on .tl-date b{color:var(--camellia)}
+.tl-body{grid-area:body}
+.tl-body h3{margin:0 0 4px;font-family:var(--serif);font-weight:600;font-size:21px;line-height:1.45;display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.tl-body p{margin:0;color:var(--ink-2);font-size:15.5px}
+.badge{font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.14em;padding:3px 9px;border:1px solid var(--camellia);color:var(--camellia);border-radius:999px}
+@media (max-width:640px){
+  .tl{--dc:0px;--lx:14px}
+  .tl-item{grid-template-columns:28px 1fr;grid-template-areas:"dot date" "dot body"}
+  .tl-date{justify-content:flex-start}
+  .tl-dot{margin-top:12px}
+  .tl-body{padding-top:2px}
+}
+
+/* ---------- place ---------- */
+.tide{height:14px;margin-bottom:clamp(40px,5vw,60px);background:var(--gold);opacity:.7;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='14' viewBox='0 0 120 14'%3E%3Cpath d='M0 7Q15 1 30 7T60 7T90 7T120 7' fill='none' stroke='%23000' stroke-width='1.2'/%3E%3C/svg%3E") repeat-x 0 0/120px 14px;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='14' viewBox='0 0 120 14'%3E%3Cpath d='M0 7Q15 1 30 7T60 7T90 7T120 7' fill='none' stroke='%23000' stroke-width='1.2'/%3E%3C/svg%3E") repeat-x 0 0/120px 14px;
+  animation:tide 9s linear infinite}
+@keyframes tide{to{-webkit-mask-position:120px 0;mask-position:120px 0}}
+.places{display:grid;grid-template-columns:1fr;gap:44px 36px}
+@media (min-width:860px){.places{grid-template-columns:repeat(3,1fr)}}
+.place{display:grid;gap:10px;align-content:start}
+.place .key{margin:0 0 6px;font-family:var(--serif);font-weight:200;font-size:clamp(56px,6.4vw,84px);line-height:1;letter-spacing:-.02em;transition:transform .8s var(--ease)}
+.place:hover .key{transform:translateX(6px)}
+.place .key.hj{font-family:var(--hanja);font-weight:300;color:var(--gold)}
+.place .key.yr{color:var(--camellia);font-variant-numeric:tabular-nums}
+.place h3{margin:0;font-family:var(--serif);font-weight:600;font-size:21px;line-height:1.4}
+.place p{margin:0;color:var(--ink-2);font-size:15.5px}
+
+/* ---------- visit ---------- */
+.visit{display:grid;grid-template-columns:1fr;gap:56px;align-items:center}
+@media (min-width:900px){.visit{grid-template-columns:1.05fr 1fr}}
+.visit-info{display:grid;gap:22px}
+.addr-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px}
+.addr{margin:0;font-family:var(--serif);font-size:clamp(19px,2vw,23px);font-weight:400}
+.meta{display:grid;gap:0;margin:6px 0 0}
+.meta div{display:grid;grid-template-columns:88px 1fr;gap:16px;padding-block:12px;border-top:1px solid var(--line)}
+.meta div:last-child{border-bottom:1px solid var(--line)}
+.meta dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;color:var(--muted);padding-top:3px}
+.meta dd{margin:0;color:var(--ink-2)}
+.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border:1px solid var(--gold);background:transparent;color:var(--ink);font:500 14.5px/1.4 var(--sans);letter-spacing:.02em;text-decoration:none;cursor:pointer;transition:color .45s var(--ease)}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .55s var(--ease)}
+.btn:hover{color:var(--on-gold)}
+.btn:hover::before{transform:scaleX(1);transform-origin:left}
+.btn.solid{background:var(--gold);color:var(--on-gold)}
+.btn.solid::before{background:var(--ink)}
+.btn.solid:hover{color:var(--hero-bg)}
+.instr{margin:0;width:min(460px,100%);justify-self:center}
+.instr svg{display:block;width:100%;height:auto;color:var(--gold);overflow:visible}
+.instr .grid line{stroke:var(--muted);stroke-width:.6;opacity:.22}
+.instr .bezel{fill:none;stroke:var(--gold);stroke-width:1;opacity:.75}
+.instr .bezel.thin{stroke-width:.5;opacity:.4}
+.instr .tick{stroke:var(--gold);stroke-width:.8;opacity:.6}
+.instr .tick.major{stroke-width:1.3;opacity:1}
+.instr .deg{font:500 9px var(--mono);fill:var(--muted);letter-spacing:.06em}
+.instr .card{font:500 13px var(--mono);fill:var(--gold);paint-order:stroke;stroke:var(--hero-bg);stroke-width:6px}
+.instr .ring-d{fill:none;stroke:var(--gold);stroke-width:.8;stroke-dasharray:2 7;opacity:.55}
+.instr .cross{stroke:var(--muted);stroke-width:.7;stroke-dasharray:3 5;opacity:.55}
+.instr .pulse{fill:none;stroke:var(--camellia);stroke-width:1.3;vector-effect:non-scaling-stroke;transform-box:fill-box;transform-origin:center;animation:pulse 3.6s var(--ease) infinite}
+@keyframes pulse{from{transform:scale(1);opacity:.95}to{transform:scale(7);opacity:0}}
+.instr .dot{fill:var(--camellia)}
+.instr .dot-ring{fill:none;stroke:var(--gold);stroke-width:1}
+.instr .name{font:600 16px var(--serif);fill:var(--ink);paint-order:stroke;stroke:var(--hero-bg);stroke-width:6px}
+.instr .lab{font:400 10.5px var(--mono);fill:var(--ink-2);letter-spacing:.04em;paint-order:stroke;stroke:var(--hero-bg);stroke-width:5px}
+.instr figcaption{margin-top:14px;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted)}
+
+/* ---------- footer ---------- */
+.foot{padding-block:64px 40px;border-top:1px solid var(--line)}
+.foot-in{display:grid;grid-template-columns:1fr;gap:36px}
+@media (min-width:820px){.foot-in{grid-template-columns:1.2fr 1fr}}
+.foot-brand{margin:0 0 10px;font-family:var(--serif);font-size:22px;font-weight:600}
+.foot-note{margin:0;max-width:34em;color:var(--ink-2);font-size:14.5px}
+.foot-h{margin:0 0 10px;font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;color:var(--gold)}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:14px;color:var(--ink-2)}
+.foot ul a{text-decoration:none;border-bottom:1px solid var(--line);transition:border-color .3s,color .3s}
+.foot ul a:hover{color:var(--camellia);border-color:var(--camellia)}
+.foot-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;margin-top:44px;padding-top:22px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--muted)}
+.totop{text-decoration:none;color:var(--ink);border:1px solid var(--line);padding:8px 14px;transition:border-color .3s,color .3s}
+.totop:hover{border-color:var(--gold);color:var(--gold)}
+
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:60;transform:translate(-50%,16px);opacity:0;pointer-events:none;background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:14px;transition:opacity .4s,transform .5s var(--ease);max-width:calc(100% - 32px);text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .ch{background-position:100% 0}
+}
+</style>
+
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="#hero"><span class="hj">玉浦</span>옥포중학교</a>
+    <nav aria-label="페이지 구역">
+      <a href="#motto">교훈</a><a href="#symbols">상징</a><a href="#history">연혁</a><a href="#visit">오시는 길</a>
+    </nav>
+  </div>
+  <div class="progress" aria-hidden="true"><i></i></div>
+</header>
+
+<main>
+<section class="hero band" id="hero">
+  <canvas id="sea" aria-hidden="true"></canvas>
+  <div class="wrap hero-in" id="heroIn">
+    <p class="eyebrow load" style="--d:.05s">경상남도 거제시 옥포동 · 공립 중학교 · 1988</p>
+    <h1 class="title" aria-label="옥포중학교"><span class="ch" style="--i:0" aria-hidden="true">옥</span><span class="ch" style="--i:1" aria-hidden="true">포</span><span class="ch" style="--i:2" aria-hidden="true">중</span><span class="ch" style="--i:3" aria-hidden="true">학</span><span class="ch" style="--i:4" aria-hidden="true">교</span></h1>
+    <p class="subname"><span class="rule" aria-hidden="true"></span><span class="load" style="--d:1s">Okpo Middle School</span></p>
+    <p class="lede load" style="--d:1.15s">동백이 겨울을 나는 바다 마을 옥포에서, 1988년부터 아이들을 길러 온 공립 중학교입니다.</p>
+    <dl class="hero-facts load" style="--d:1.35s">
+      <div><dt>개교</dt><dd>1988. 3. 8</dd></div>
+      <div><dt>교훈</dt><dd>근면 · 정직 · 건강</dd></div>
+      <div><dt>재학생</dt><dd>825명<small>2026.5</small></dd></div>
+    </dl>
+  </div>
+  <div class="hanja-rail hj" aria-hidden="true"><span style="--i:0">玉</span><span style="--i:1">浦</span><span style="--i:2">中</span><span style="--i:3">學</span><span style="--i:4">校</span></div>
+  <div class="hero-foot"><div class="wrap"><span>비공식 소개 페이지</span><span>34.8958°N  128.6981°E</span></div></div>
+</section>
+
+<div class="ribbon" aria-hidden="true">
+  <div class="track">
+    <div class="grp"><span class="m">Okpo Middle School</span><i></i><span>근면 <span class="hj">勤勉</span></span><i></i><span>정직 <span class="hj">正直</span></span><i></i><span>건강 <span class="hj">健康</span></span><i></i><span class="m">Since 1988</span><i></i><span>교목 동백나무</span><i></i><span>교화 장미</span><i></i><span>거제시 옥포대첩로 99</span><i></i></div>
+    <div class="grp"><span class="m">Okpo Middle School</span><i></i><span>근면 <span class="hj">勤勉</span></span><i></i><span>정직 <span class="hj">正直</span></span><i></i><span>건강 <span class="hj">健康</span></span><i></i><span class="m">Since 1988</span><i></i><span>교목 동백나무</span><i></i><span>교화 장미</span><i></i><span>거제시 옥포대첩로 99</span><i></i></div>
+  </div>
+</div>
+
+<section class="sec" id="motto">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">Motto · 교훈</p>
+      <h2>부지런하고, 바르고, <em>튼튼하게</em></h2>
+      <p class="sec-lede">옥포중학교의 교훈은 근면, 정직, 건강 세 낱말입니다. 한자와 국어사전 풀이를 함께 적었습니다.</p>
+    </div>
+    <div class="virtues rv">
+      <article class="virtue tilt" style="--i:0">
+        <p class="big hj" style="--i:0" aria-hidden="true">勤勉</p>
+        <h3>근면 <small>DILIGENCE</small></h3>
+        <p class="def-k">사전 풀이</p>
+        <p class="def">부지런히 일하며 힘씀.</p>
+      </article>
+      <article class="virtue tilt" style="--i:1">
+        <p class="big hj" style="--i:1" aria-hidden="true">正直</p>
+        <h3>정직 <small>HONESTY</small></h3>
+        <p class="def-k">사전 풀이</p>
+        <p class="def">마음에 거짓이나 꾸밈이 없이 바르고 곧음.</p>
+      </article>
+      <article class="virtue tilt" style="--i:2">
+        <p class="big hj" style="--i:2" aria-hidden="true">健康</p>
+        <h3>건강 <small>HEALTH</small></h3>
+        <p class="def-k">사전 풀이</p>
+        <p class="def">정신적으로나 육체적으로 아무 탈이 없고 튼튼함.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec band" id="symbols">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">Symbols · 교목과 교화</p>
+      <h2>겨울을 견디는 <em>동백</em>, 어디서나 어울리는 <em>장미</em></h2>
+      <p class="sec-lede">교목과 교화는 모양 하나하나에 뜻이 붙어 있습니다.</p>
+    </div>
+    <div class="syms">
+      <article class="sym rv">
+        <div class="flower" data-kind="camellia"><svg viewBox="-135 -135 270 270" aria-hidden="true"></svg></div>
+        <div class="sym-txt">
+          <p class="kicker">교목 · School tree</p>
+          <h3>동백나무</h3>
+          <p class="latin">Camellia japonica</p>
+          <ul class="mean">
+            <li style="--i:0"><span>사철 푸른 잎</span><b>겸손과 덕성스러움</b></li>
+            <li style="--i:1"><span>겨울을 견디고 피는 꽃</span><b>굳건한 의지</b></li>
+            <li style="--i:2"><span>붉은 꽃</span><b>이타적인 사랑</b></li>
+          </ul>
+          <p class="aside">동백꽃은 꽃잎이 한 장씩 흩어지지 않고 송이째 떨어집니다. 맨 위 화면에 떨어지는 꽃도 그렇게 그렸습니다.</p>
+        </div>
+      </article>
+      <article class="sym rv">
+        <div class="flower" data-kind="rose"><svg viewBox="-135 -135 270 270" aria-hidden="true"></svg></div>
+        <div class="sym-txt">
+          <p class="kicker">교화 · School flower</p>
+          <h3>장미</h3>
+          <p class="latin">Rosa</p>
+          <ul class="mean">
+            <li style="--i:0"><span>꽃잎</span><b>학업에 대한 열정과 기쁨</b></li>
+            <li style="--i:1"><span>기품 있는 자태</span><b>타인에 대한 존중</b></li>
+            <li style="--i:2"><span>어디서나 잘 어울림</span><b>창의와 역량</b></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="numbers">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">In numbers · 숫자</p>
+      <h2>숫자로 보는 <em>옥포중</em></h2>
+      <p class="sec-lede">문을 연 해와 지금의 숫자를 나란히 놓았습니다.</p>
+    </div>
+    <div class="stats rv">
+      <div class="stat" style="--i:0">
+        <div class="num"><span class="odo">1988</span><span class="unit">년</span></div>
+        <p class="stat-k">개교</p>
+        <p class="stat-n">1988년 3월 8일, 4학급으로 문을 열었습니다.</p>
+      </div>
+      <div class="stat" style="--i:1">
+        <div class="num"><span class="odo">208</span><span class="unit">명</span></div>
+        <p class="stat-k">첫해 학생</p>
+        <p class="stat-n">개교하던 해 4개 학급의 학생 수입니다.</p>
+      </div>
+      <div class="stat" style="--i:2">
+        <div class="num"><span class="odo">11,205</span><span class="unit">명</span></div>
+        <p class="stat-k">누적 졸업생</p>
+        <p class="stat-n">2023년 1월 제33회 졸업식까지의 합계입니다.</p>
+      </div>
+      <div class="stat" style="--i:3">
+        <div class="num"><span class="odo">825</span><span class="unit">명</span></div>
+        <p class="stat-k">재학생</p>
+        <p class="stat-n">2026년 5월 22일 기준입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="history">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">History · 연혁</p>
+      <h2>옥포중이 <em>걸어온 길</em></h2>
+      <p class="sec-lede">학교 연혁 가운데 주요 날짜를 골랐습니다. 스크롤을 내리면 선이 따라 내려옵니다.</p>
+    </div>
+    <ol class="tl" id="tl">
+      <li class="tl-item"><time class="tl-date" datetime="1988-01-13"><b>1988</b><span>01.13</span></time><span class="tl-dot" aria-hidden="true"></span><div class="tl-body"><h3>설립 인가</h3><p>4학급 규모로 학교 설립 인가를 받았습니다.</p></div></li>
+      <li class="tl-item"><time class="tl-date" datetime="1988-03-08"><b>1988</b><span>03.08</span></time><span class="tl-dot" aria-hidden="true"></span><div class="tl-body"><h3>개교</h3><p>4학급, 학생 208명으로 첫 학기를 시작했습니다.</p></div></li>
+      <li class="tl-item"><time class="tl-date" datetime="2002-02-28"><b>2002</b><span>02.28</span></time><span class="tl-dot" aria-hidden="true"></span><div class="tl-body"><h3>지금의 교사로 이전</h3><p>현재 쓰고 있는 학교 건물로 옮겼습니다.</p></div></li>
+      <li class="tl-item"><time class="tl-date" datetime="2008-02-29"><b>2008</b><span>02.29</span></time><span class="tl-dot" aria-hidden="true"></span><div class="tl-body"><h3>인조 잔디 운동장</h3><p>운동장에 인조 잔디를 깔았습니다.</p></div></li>
+      <li class="tl-item"><time class="tl-date" datetime="2010-06-11"><b>2010</b><span>06.11</span></time><span class="tl-dot" aria-hidden="true"></span><div class="tl-body"><h3>선진형 교과교실 선정</h3><p>과목마다 전용 교실을 두고 학생이 교실을 옮겨 가며 수업하는 교과교실제 학교로 선정되었습니다.</p></div></li>
+      <li class="tl-item"><time class="tl-date" datetime="2023-01-11"><b>2023</b><span>01.11</span></time><span class="tl-dot" aria-hidden="true"></span><div class="tl-body"><h3>제33회 졸업식</h3><p>246명이 졸업해 누적 졸업생이 11,205명이 되었습니다.</p></div></li>
+      <li class="tl-item"><time class="tl-date" datetime="2023-03-02"><b>2023</b><span>03.02</span></time><span class="tl-dot" aria-hidden="true"></span><div class="tl-body"><h3>2023학년도 입학식</h3><p>신입생 250명이 입학했습니다.</p></div></li>
+      <li class="tl-item"><time class="tl-date" datetime="2026-05-22"><b>2026</b><span>05.22</span></time><span class="tl-dot" aria-hidden="true"></span><div class="tl-body"><h3>재학생 825명 <span class="badge">NOW</span></h3><p>가장 최근에 공개된 재학생 수입니다.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="okpo">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">Place · 옥포</p>
+      <h2>학교 이름이 된 동네, <em>옥포</em></h2>
+    </div>
+    <div class="tide" aria-hidden="true"></div>
+    <div class="places">
+      <article class="place rv">
+        <p class="key hj" aria-hidden="true">玉浦</p>
+        <h3>구슬 옥, 개 포</h3>
+        <p>옥포(玉浦)는 구슬 옥(玉) 자에 포구를 뜻하는 개 포(浦) 자를 씁니다. 학교 이름도 이 동네 이름에서 왔습니다.</p>
+      </article>
+      <article class="place rv">
+        <p class="key yr" aria-hidden="true">1592</p>
+        <h3>옥포해전</h3>
+        <p>1592년 음력 5월 7일, 이순신이 이끈 조선 수군이 옥포 앞바다에서 임진왜란의 첫 승리를 거두었습니다. 학교 주소의 '옥포대첩로'가 이 해전에서 온 이름입니다.</p>
+      </article>
+      <article class="place rv">
+        <p class="key" aria-hidden="true">옥포만</p>
+        <h3>배를 짓는 바다</h3>
+        <p>옥포만을 따라 대형 조선소(지금의 한화오션)가 자리 잡고 있어, 옥포는 조선업과 함께 자란 동네입니다.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec band" id="visit">
+  <div class="wrap visit">
+    <div class="visit-info rv">
+      <p class="kicker">Visit · 오시는 길</p>
+      <h2>옥포대첩로 <em>99</em></h2>
+      <div class="addr-row">
+        <p class="addr" id="addr">경상남도 거제시 옥포대첩로 99 (옥포동)</p>
+        <button class="btn" id="copy" type="button">주소 복사</button>
+      </div>
+      <dl class="meta">
+        <div><dt>관할</dt><dd>경상남도거제교육지원청</dd></div>
+        <div><dt>설립</dt><dd>공립 · 1988년 개교</dd></div>
+        <div><dt>좌표</dt><dd class="mono">34.8958° N, 128.6981° E</dd></div>
+      </dl>
+      <div class="links">
+        <a class="btn solid" href="https://okpo-m.gne.go.kr/okpo-m/main.do" target="_blank" rel="noopener">학교 홈페이지 <span aria-hidden="true">↗</span></a>
+        <a class="btn" href="https://map.naver.com/p/search/%EA%B1%B0%EC%A0%9C%20%EC%98%A5%ED%8F%AC%EC%A4%91%ED%95%99%EA%B5%90" target="_blank" rel="noopener">네이버 지도 <span aria-hidden="true">↗</span></a>
+        <a class="btn" href="https://map.kakao.com/?q=%EA%B1%B0%EC%A0%9C%20%EC%98%A5%ED%8F%AC%EC%A4%91%ED%95%99%EA%B5%90" target="_blank" rel="noopener">카카오맵 <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <figure class="instr rv">
+      <svg viewBox="-215 -215 430 430" role="img" aria-labelledby="instr-t">
+        <title id="instr-t">북위 34.8958도, 동경 128.6981도에 있는 옥포중학교의 위치 표시</title>
+        <defs>
+          <clipPath id="clipC"><circle r="172"/></clipPath>
+          <radialGradient id="beamG" cx="0" cy="0" r="176" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="currentColor" stop-opacity=".5"/>
+            <stop offset="1" stop-color="currentColor" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <g class="grid" id="grid" clip-path="url(#clipC)"></g>
+        <g clip-path="url(#clipC)">
+          <g>
+            <circle r="176" fill="none"/>
+            <path d="M0 0L-42.6 -170.8A176 176 0 0 1 42.6 -170.8Z" fill="url(#beamG)"/>
+            <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="9s" repeatCount="indefinite"/>
+          </g>
+        </g>
+        <circle r="180" class="bezel"/>
+        <circle r="172" class="bezel thin"/>
+        <g id="ticks"></g>
+        <circle r="122" class="ring-d"><animateTransform attributeName="transform" type="rotate" from="0 0 0" to="-360 0 0" dur="90s" repeatCount="indefinite"/></circle>
+        <line class="cross" x1="-170" y1="0" x2="170" y2="0"/>
+        <line class="cross" x1="0" y1="-170" x2="0" y2="170"/>
+        <text class="card" x="0" y="-146" text-anchor="middle">N</text>
+        <text class="card" x="150" y="4.5" text-anchor="middle">E</text>
+        <text class="card" x="0" y="155" text-anchor="middle">S</text>
+        <text class="card" x="-150" y="4.5" text-anchor="middle">W</text>
+        <circle r="9" class="pulse"/>
+        <circle r="9" class="pulse" style="animation-delay:1.2s"/>
+        <circle r="9" class="pulse" style="animation-delay:2.4s"/>
+        <circle r="9" class="dot-ring"/>
+        <circle r="4.5" class="dot"/>
+        <text class="name" x="18" y="-16">옥포중학교</text>
+        <text class="lab" x="18" y="24">34°53′44.97″N</text>
+        <text class="lab" x="18" y="40">128°41′53.30″E</text>
+      </svg>
+      <figcaption>OKPO · GEOJE · GYEONGSANGNAM-DO</figcaption>
+    </figure>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in rv">
+      <div>
+        <p class="foot-brand">옥포중학교 이야기</p>
+        <p class="foot-note">위키백과, 나무위키 같은 공개 자료로 만든 비공식 소개 페이지입니다. 학교가 운영하는 공식 홈페이지가 아니며, 학사 일정과 공지는 학교 홈페이지에서 확인해 주세요.</p>
+      </div>
+      <div>
+        <p class="foot-h">자료 출처</p>
+        <ul>
+          <li><a href="https://ko.wikipedia.org/wiki/%EC%98%A5%ED%8F%AC%EC%A4%91%ED%95%99%EA%B5%90" target="_blank" rel="noopener">위키백과 「옥포중학교」</a> · 연혁, 교훈, 교목·교화, 재학생 수</li>
+          <li><a href="https://namu.wiki/w/%EC%98%A5%ED%8F%AC%EC%A4%91%ED%95%99%EA%B5%90" target="_blank" rel="noopener">나무위키 「옥포중학교」</a> · 교목·교화에 담긴 뜻</li>
+          <li><a href="https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?SHL_IDF_CD=fa709f5b-9bae-41bf-8cd2-0663d5f0a670" target="_blank" rel="noopener">학교알리미 「옥포중학교」</a> · 공시 정보</li>
+          <li>표준국어대사전 · 교훈의 낱말 풀이</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>재학생 수 2026. 5. 22 기준 · 연혁은 각 날짜 기준</span>
+      <a class="totop" href="#hero">맨 위로 ↑</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const root = document.documentElement;
+  const css = n => getComputedStyle(root).getPropertyValue(n).trim();
+  const f1 = n => Math.round(n * 10) / 10;
+
+  /* ---------- flowers (symbols) ---------- */
+  const petalD = (r, w) => `M0 0C${f1(-r*w)} ${f1(-r*.22)} ${f1(-r*(w-.06))} ${f1(-r*1.04)} 0 ${f1(-r*.98)}C${f1(r*(w-.06))} ${f1(-r*1.04)} ${f1(r*w)} ${f1(-r*.22)} 0 0Z`;
+  const LEAF = 'M0 0C30 -27 78 -31 116 0C78 31 30 27 0 0Z';
+  function flowerMarkup(kind) {
+    let i = 0, s = '';
+    if (kind === 'camellia') {
+      s += '<defs><radialGradient id="gc" cx="0" cy="0" r="96" gradientUnits="userSpaceOnUse"><stop offset=".12" style="stop-color:var(--camellia-deep)"/><stop offset=".78" style="stop-color:var(--camellia)"/></radialGradient></defs>';
+    }
+    const leaves = kind === 'camellia' ? [[-162, 26], [-28, 28], [96, 34]] : [[-148, 38], [-24, 38]];
+    leaves.forEach(([a, t]) => {
+      s += `<g transform="rotate(${a}) translate(${t} 0)"><g class="pt lf" style="--i:${i++}"><path d="${LEAF}"/><path class="vein" d="M8 0L108 0"/></g></g>`;
+    });
+    if (kind === 'camellia') {
+      [[94, .74, 0, 'o'], [60, .72, 36, 'n']].forEach(([r, w, off, c]) => {
+        for (let k = 0; k < 5; k++) s += `<g transform="rotate(${off + k * 72})"><path class="pt petal ${c}" style="--i:${i++}" d="${petalD(r, w)}"/></g>`;
+      });
+      for (let k = 0; k < 18; k++) {
+        const a = k / 18 * Math.PI * 2;
+        s += `<circle class="st" style="--i:${k}" cx="${f1(Math.cos(a) * 17)}" cy="${f1(Math.sin(a) * 17)}" r="3.6"/>`;
+      }
+      s += '<circle class="st core" style="--i:18" r="10"/>';
+    } else {
+      [[6, 96, .9, 0], [6, 78, .9, 30], [5, 60, .88, 12], [5, 43, .86, 48], [4, 28, .84, 20]].forEach(([n, r, w, off], L) => {
+        for (let k = 0; k < n; k++) s += `<g transform="rotate(${off + k * 360 / n})"><path class="pt petal L${L}" style="--i:${i++}" d="${petalD(r, w)}"/></g>`;
+      });
+      s += '<path class="st curl" style="--i:0" d="M-4 2a6 6 0 1 1 10 -2a9 9 0 1 1 -16 6"/>';
+    }
+    return s;
+  }
+  $$('.flower').forEach(el => { $('svg', el).innerHTML = flowerMarkup(el.dataset.kind); });
+
+  /* ---------- instrument (visit) ---------- */
+  const NS = 'http://www.w3.org/2000/svg';
+  const grid = $('#grid'), ticks = $('#ticks');
+  for (let v = -175; v <= 175; v += 35) {
+    grid.insertAdjacentHTML('beforeend', `<line x1="${v}" y1="-180" x2="${v}" y2="180"/><line x1="-180" y1="${v}" x2="180" y2="${v}"/>`);
+  }
+  for (let d = 0; d < 360; d += 5) {
+    const a = (d - 90) * Math.PI / 180, major = d % 30 === 0, len = major ? 12 : 5;
+    const c = Math.cos(a), s = Math.sin(a);
+    ticks.insertAdjacentHTML('beforeend', `<line class="tick${major ? ' major' : ''}" x1="${f1(c*180)}" y1="${f1(s*180)}" x2="${f1(c*(180-len))}" y2="${f1(s*(180-len))}"/>`);
+    if (major && d % 90) ticks.insertAdjacentHTML('beforeend', `<text class="deg" x="${f1(c*197)}" y="${f1(s*197 + 3)}" text-anchor="middle">${String(d).padStart(3, '0')}</text>`);
+  }
+  if (reduce) $$('animateTransform').forEach(a => a.remove());
+
+  /* ---------- odometer digits ---------- */
+  $$('.odo').forEach(el => {
+    const txt = el.textContent.trim();
+    el.textContent = '';
+    const sr = document.createElement('span'); sr.className = 'sr'; sr.textContent = txt; el.appendChild(sr);
+    [...txt].forEach((ch, idx) => {
+      if (/\d/.test(ch)) {
+        const w = document.createElement('span'); w.className = 'dg'; w.setAttribute('aria-hidden', 'true');
+        const strip = document.createElement('span'); strip.className = 'strip';
+        for (let k = 0; k < 20; k++) { const c = document.createElement('span'); c.textContent = k % 10; strip.appendChild(c); }
+        strip.style.setProperty('--to', 10 + (+ch));
+        strip.style.setProperty('--di', idx);
+        w.appendChild(strip); el.appendChild(w);
+      } else {
+        const c = document.createElement('span'); c.setAttribute('aria-hidden', 'true'); c.textContent = ch; el.appendChild(c);
+      }
+    });
+  });
+  function roll(scope) {
+    if (reduce) return;
+    $$('.odo', scope).forEach(el => {
+      const strips = $$('.strip', el);
+      el.classList.remove('roll');
+      strips.forEach(s => { s.style.transform = 'translateY(0)'; });
+      void el.offsetHeight;
+      el.classList.add('roll');
+      strips.forEach(s => { s.style.transform = ''; });
+    });
+  }
+
+  /* ---------- scroll reveal ---------- */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      el.classList.remove('pre');
+      el.classList.add('in');
+      if (el.matches('.stats')) roll(el);
+      io.unobserve(el);
+    });
+  }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
+  $$('.rv').forEach(el => {
+    if (!reduce && el.getBoundingClientRect().top > innerHeight) el.classList.add('pre');
+    io.observe(el);
+  });
+
+  /* ---------- nav: solid state, progress, active link, hero parallax, timeline ---------- */
+  const nav = $('#nav'), hero = $('#hero'), heroIn = $('#heroIn'), tl = $('#tl');
+  const tlItems = $$('.tl-item', tl);
+  const links = $$('.nav nav a');
+  function onScroll() {
+    const y = scrollY, hh = hero.offsetHeight;
+    nav.classList.toggle('solid', y > hh - 90);
+    const max = root.scrollHeight - innerHeight;
+    nav.style.setProperty('--p', max > 0 ? (y / max).toFixed(4) : 0);
+    if (!reduce && y < hh) {
+      heroIn.style.transform = `translate3d(0, ${f1(y * .2)}px, 0)`;
+      heroIn.style.opacity = String(1 - Math.min(.8, y / hh * 1.05));
+    }
+    const r = tl.getBoundingClientRect(), mid = innerHeight * .62;
+    tl.style.setProperty('--tp', Math.min(1, Math.max(0, (mid - r.top) / r.height)).toFixed(4));
+    tlItems.forEach(it => {
+      const d = it.querySelector('.tl-dot').getBoundingClientRect();
+      it.classList.toggle('on', d.top + d.height / 2 < mid);
+    });
+  }
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll);
+  onScroll();
+  const secIO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  $$('main > section[id]').forEach(s => secIO.observe(s));
+
+  /* ---------- tilt + spotlight cards ---------- */
+  if (!reduce && matchMedia('(hover: hover)').matches) {
+    $$('.tilt').forEach(el => {
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        el.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+        el.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+        el.style.transform = `perspective(900px) rotateX(${((.5 - y) * 7).toFixed(2)}deg) rotateY(${((x - .5) * 9).toFixed(2)}deg) translateY(-4px)`;
+      });
+      el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+    });
+  }
+
+  /* ---------- copy address ---------- */
+  const toastEl = $('#toast');
+  let toastT = 0;
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastT);
+    toastT = setTimeout(() => toastEl.classList.remove('show'), 2400);
+  }
+  $('#copy').addEventListener('click', () => {
+    const addr = $('#addr'), text = addr.textContent.trim();
+    const fallback = () => {
+      const rg = document.createRange(); rg.selectNodeContents(addr);
+      const sel = getSelection(); sel.removeAllRanges(); sel.addRange(rg);
+      toast('주소를 선택해 두었어요. Ctrl+C로 복사하세요');
+    };
+    try {
+      navigator.clipboard.writeText(text).then(() => toast('주소를 복사했어요'), fallback);
+    } catch (err) { fallback(); }
+  });
+
+  /* ---------- hero sea: waves + falling camellias ---------- */
+  const cv = $('#sea'), ctx = cv.getContext('2d');
+  const CAM = css('--hero-camellia'), CAMD = css('--hero-camellia-deep'), GOLD = css('--hero-gold'), STAMEN = css('--hero-stamen');
+  const NL = 9;
+  let W = 0, H = 0, T = 0, last = 0, raf = 0, heroVisible = true;
+  const blooms = [], motes = [], ripples = [];
+  const pointer = { x: -1e4, y: -1e4 };
+
+  const sprite = (() => {
+    const S = 96, c = document.createElement('canvas');
+    c.width = c.height = S * 2;
+    const g = c.getContext('2d');
+    g.translate(S, S);
+    const R = S * .9;
+    const petal = (r, w) => {
+      g.beginPath(); g.moveTo(0, 0);
+      g.bezierCurveTo(-r*w, -r*.22, -r*(w-.06), -r*1.04, 0, -r*.98);
+      g.bezierCurveTo(r*(w-.06), -r*1.04, r*w, -r*.22, 0, 0);
+      g.closePath();
+    };
+    [[R, .74, 0], [R * .64, .72, Math.PI / 5]].forEach(([r, w, off]) => {
+      for (let i = 0; i < 5; i++) {
+        g.save(); g.rotate(off + i * Math.PI * 2 / 5);
+        const gr = g.createLinearGradient(0, 0, 0, -r);
+        gr.addColorStop(0, CAMD); gr.addColorStop(.5, CAM); gr.addColorStop(1, CAM);
+        g.fillStyle = gr; petal(r, w); g.fill();
+        g.lineWidth = 1.6; g.strokeStyle = 'rgba(40,0,12,.35)'; g.stroke();
+        g.restore();
+      }
+    });
+    g.fillStyle = GOLD;
+    for (let i = 0; i < 18; i++) {
+      const a = i / 18 * Math.PI * 2;
+      g.beginPath(); g.arc(Math.cos(a) * R * .19, Math.sin(a) * R * .19, R * .045, 0, Math.PI * 2); g.fill();
+    }
+    g.beginPath(); g.arc(0, 0, R * .12, 0, Math.PI * 2); g.fillStyle = STAMEN; g.fill();
+    return c;
+  })();
+
+  const lineBase = k => H * (.64 + .36 * Math.pow(k / (NL - 1), 1.5));
+  function waterY(x, k, t) {
+    const a = 2 + k * 1.7;
+    return lineBase(k) + Math.sin(x * .0042 * (1 + k * .07) + t * .00055 * (1 + k * .12) + k * 1.3) * a
+                       + Math.sin(x * .0115 - t * .0008 + k * 2.1) * a * .35;
+  }
+  function spawn(b, initial) {
+    b.k = Math.floor(Math.random() * NL);
+    b.s = 7 + b.k * 1.5 + Math.random() * 5;
+    b.x = Math.random() * W;
+    b.y = initial ? Math.random() * lineBase(b.k) * .95 : -30 - Math.random() * H * .4;
+    b.vy = .28 + b.k * .045 + Math.random() * .3;
+    b.rot = Math.random() * 6.28; b.vr = (Math.random() - .5) * .025;
+    b.flip = Math.random() * 6.28; b.vf = .012 + Math.random() * .03;
+    b.ph = Math.random() * 6.28; b.state = 0; b.life = 0; b.a = 1;
+    return b;
+  }
+  function resize() {
+    const r = cv.getBoundingClientRect();
+    W = r.width; H = r.height;
+    const dpr = Math.min(2, devicePixelRatio || 1);
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = Math.max(8, Math.min(22, Math.round(W / 78)));
+    while (blooms.length < n) blooms.push(spawn({}, true));
+    blooms.length = n;
+    if (!motes.length) for (let i = 0; i < 48; i++) motes.push({ x: Math.random(), y: Math.random() * .7, r: .5 + Math.random() * 1.1, ph: Math.random() * 6.28, sp: .001 + Math.random() * .0022, vy: .000015 + Math.random() * .00004 });
+    if (reduce) draw(0);
+  }
+  function drawBloom(b) {
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, b.a);
+    ctx.translate(b.x, b.y);
+    ctx.rotate(b.rot);
+    ctx.scale(1, b.state ? .42 : .3 + .7 * Math.abs(Math.cos(b.flip)));
+    const d = b.s * 2.25;
+    ctx.drawImage(sprite, -d / 2, -d / 2, d, d);
+    ctx.restore();
+  }
+  function draw(dt) {
+    const step = dt / 16.67;
+    ctx.clearRect(0, 0, W, H);
+
+    // gold motes in the night air
+    motes.forEach(m => {
+      m.y -= m.vy * dt; if (m.y < -.02) { m.y = .72; m.x = Math.random(); }
+      ctx.globalAlpha = .12 + .55 * (.5 + .5 * Math.sin(T * m.sp + m.ph));
+      ctx.fillStyle = GOLD;
+      ctx.beginPath(); ctx.arc(m.x * W, m.y * H, m.r, 0, Math.PI * 2); ctx.fill();
+    });
+
+    // darken the water under the first line
+    ctx.globalAlpha = 1;
+    ctx.beginPath();
+    for (let x = 0; x <= W + 8; x += 8) { const y = waterY(x, 0, T); x ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+    ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
+    const wg = ctx.createLinearGradient(0, lineBase(0), 0, H);
+    wg.addColorStop(0, 'rgba(3,12,15,0)'); wg.addColorStop(1, 'rgba(3,12,15,.55)');
+    ctx.fillStyle = wg; ctx.fill();
+
+    // engraved wave lines
+    ctx.strokeStyle = GOLD;
+    for (let k = 0; k < NL; k++) {
+      ctx.beginPath();
+      for (let x = 0; x <= W + 8; x += 8) { const y = waterY(x, k, T); x ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+      ctx.globalAlpha = .07 + k * .032; ctx.lineWidth = .8 + k * .09; ctx.stroke();
+    }
+    // moonlight path on the water
+    const mx = W * .8;
+    ctx.lineWidth = 1.5;
+    for (let k = 0; k < NL; k++) {
+      const len = (12 + k * 10) * (.55 + .45 * Math.sin(T * .0021 + k * 1.7));
+      const y = waterY(mx, k, T);
+      ctx.globalAlpha = .22 + k * .03;
+      ctx.beginPath(); ctx.moveTo(mx - len, y); ctx.lineTo(mx + len, y); ctx.stroke();
+    }
+
+    // ripples where blossoms land
+    for (let i = ripples.length - 1; i >= 0; i--) {
+      const r = ripples[i];
+      r.r += .45 * step; r.a -= .011 * step;
+      if (r.a <= 0) { ripples.splice(i, 1); continue; }
+      ctx.globalAlpha = r.a; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.ellipse(r.x, r.y, r.r, r.r * .28, 0, 0, Math.PI * 2); ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+
+    // blossoms: floating ones first, falling ones on top
+    blooms.forEach(b => {
+      if (dt) {
+        if (b.state === 0) {
+          b.y += b.vy * step;
+          b.x += (Math.sin(T * .0009 + b.ph) * .45 + .12) * step;
+          b.rot += b.vr * step; b.flip += b.vf * step;
+          const wy = waterY(b.x, b.k, T);
+          if (b.y >= wy) { b.state = 1; b.y = wy; ripples.push({ x: b.x, y: wy, r: b.s * .6, a: .55 }); }
+        } else {
+          b.life += dt; b.x += .16 * step; b.y = waterY(b.x, b.k, T); b.rot += b.vr * .15 * step;
+          if (b.life > 6500) b.a -= .006 * step;
+          if (b.a <= 0 || b.x > W + 40) spawn(b, false);
+        }
+        const dx = b.x - pointer.x, dy = b.y - pointer.y, d2 = dx * dx + dy * dy;
+        if (d2 < 16900) {
+          const d = Math.sqrt(d2) || 1, p = (130 - d) / 130 * 1.8 * step;
+          b.x += dx / d * p; if (b.state === 0) b.y += dy / d * p * .5;
+        }
+        if (b.state === 0 && b.x > W + 40) b.x = -30;
+        if (b.x < -40) b.x = W + 30;
+      }
+    });
+    blooms.forEach(b => { if (b.state === 1) drawBloom(b); });
+    blooms.forEach(b => { if (b.state === 0) drawBloom(b); });
+  }
+  function frame(now) {
+    const dt = Math.min(50, now - last); last = now; T += dt;
+    draw(dt);
+    raf = requestAnimationFrame(frame);
+  }
+  function start() { if (!raf && !reduce && heroVisible && !document.hidden) { last = performance.now(); raf = requestAnimationFrame(frame); } }
+  function stop() { cancelAnimationFrame(raf); raf = 0; }
+
+  new ResizeObserver(resize).observe(cv);
+  resize();
+  if (reduce) draw(0);
+  new IntersectionObserver(([e]) => { heroVisible = e.isIntersecting; heroVisible ? start() : stop(); }).observe(hero);
+  document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+  hero.addEventListener('pointermove', e => { const r = cv.getBoundingClientRect(); pointer.x = e.clientX - r.left; pointer.y = e.clientY - r.top; });
+  hero.addEventListener('pointerleave', () => { pointer.x = pointer.y = -1e4; });
+  start();
+})();
+</script>
